@@ -109,7 +109,7 @@ with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE=
             for cat in importData:
                 if importData[cat]: # On n'importe que s'il y a des données
                     # Remplacement des espaces par des underscores et mise en majuscule (convention Neo4j)
-                    rel_type = cat.replace(" ", "_")
+                    rel_type = cat.replace(" ", "_").capitalize()
                     
                     # Utilisation de create_relationships pour lier les nœuds existants via leurs IDs
                     create_relationships(graph.auto(), importData[cat], rel_type, 
